@@ -1,13 +1,15 @@
-FROM node:14
+FROM alpine:3.18
 
-WORKDIR /app
+RUN apk update
+RUN apk add php php-fpm
 
-COPY package.json .
+COPY ./tools/www.conf /etc/php81/php-fpm.d/www.conf
 
-RUN npm install
+RUN mkdir /var/www
+RUN mkdir /var/www/html
 
-COPY . .
+COPY ./tools/html /var/www/html
 
-EXPOSE 3000
+EXPOSE 9000
 
-CMD [ "node", "app.mjs"]
+CMD [ "php-fpm81", "-F" ]

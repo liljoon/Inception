@@ -13,5 +13,3 @@ services:
 
   mariadb:
     build: ./requirements/mariadb
-    ports:
-      - 3306:3306
