@@ -5,7 +5,10 @@ RUN apk add nginx
 
 COPY ./tools/default.conf /etc/nginx/http.d/default.conf
 
+# RUN apk add envsubst
+
+COPY ./tools/script.sh /script.sh
 
 EXPOSE 80
 
-CMD [ "usr/sbin/nginx", "-g", "daemon off;"]
+CMD [ "/bin/sh", "/script.sh"]
