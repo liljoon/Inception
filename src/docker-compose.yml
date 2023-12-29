@@ -8,14 +8,14 @@ services:
     depends_on:
       - wordpress
     volumes:
-      - ./requirements/wordpress/wp:/wordpress
+      - ./requirements/wordpress/wp:/var/www/html
     env_file:
       - ./.env
 
   wordpress:
     build: ./requirements/wordpress
     volumes:
-      - ./requirements/wordpress/wp:/wordpress
+      - ./requirements/wordpress/wp:/var/www/html
     env_file:
       - ./.env
 
