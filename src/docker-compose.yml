@@ -25,6 +25,8 @@ services:
 
   mariadb:
     build: ./requirements/mariadb
+    # volumes:
+    #   - ./requirements/mariadb/db:/var/lib/mysql/wordpress
     env_file:
       - ./.env
     restart: on-failure
