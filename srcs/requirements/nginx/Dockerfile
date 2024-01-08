@@ -7,6 +7,6 @@ COPY ./conf/default.conf /etc/nginx/http.d/default.template
 
 COPY ./tools/script.sh /script.sh
 
-EXPOSE 80
+EXPOSE 443
 
 CMD [ "/bin/sh", "/script.sh"]

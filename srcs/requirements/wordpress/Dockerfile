@@ -13,6 +13,4 @@ COPY ./conf/www.conf /etc/php81/php-fpm.d/www.conf
 
 COPY ./tools/script.sh /script.sh
 
-EXPOSE 9000
-
 CMD [ "sh", "/script.sh" ]
