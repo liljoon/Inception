@@ -8,7 +8,7 @@ services:
     depends_on:
       - wordpress
     volumes:
-      - ./requirements/wordpress/wp:/var/www/html
+      - /home/isunwoo/data/wordpress:/var/www/html
     env_file:
       - ./.env
     restart: on-failure
@@ -16,7 +16,7 @@ services:
   wordpress:
     build: ./requirements/wordpress
     volumes:
-      - ./requirements/wordpress/wp:/var/www/html
+      - /home/isunwoo/data/wordpress:/var/www/html
     env_file:
       - ./.env
     depends_on:
@@ -25,8 +25,8 @@ services:
 
   mariadb:
     build: ./requirements/mariadb
-    # volumes:
-    #   - ./requirements/mariadb/db:/var/lib/mysql/wordpress
+    volumes:
+      - /home/isunwoo/data/db:/var/lib/mysql/wordpress
     env_file:
       - ./.env
     restart: on-failure
