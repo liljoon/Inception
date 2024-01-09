@@ -3,4 +3,6 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/ngi
 
 envsubst '$DOMAIN_NAME' < /etc/nginx/http.d/default.template > /etc/nginx/http.d/default.conf
 
+mv /helloworld.html /var/www/html/helloworld.html
+
 usr/sbin/nginx -g "daemon off;"

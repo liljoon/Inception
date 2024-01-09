@@ -5,6 +5,8 @@ RUN apk add nginx openssl envsubst
 
 COPY ./conf/default.conf /etc/nginx/http.d/default.template
 
+COPY ./tools/helloworld.html /helloworld.html
+
 COPY ./tools/script.sh /script.sh
 
 EXPOSE 443
