@@ -10,5 +10,5 @@ up :
 	docker-compose -f ./srcs/docker-compose.yml up -d --build
 
 clean :
-	docker-compose -f ./srcs/docker-compose.yml down
+	docker-compose -f ./srcs/docker-compose.yml down -v
 	rm -rf /home/isunwoo/data/*

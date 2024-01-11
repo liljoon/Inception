@@ -3,30 +3,57 @@ version: "3.8"
 services:
   nginx:
     build: ./requirements/nginx
+    image: nginx
     ports:
       - 443:443
     depends_on:
       - wordpress
     volumes:
-      - /home/isunwoo/data/wordpress:/var/www/html
+      - WordPress:/var/www/html
     env_file:
       - ./.env
     restart: on-failure
+    networks:
+      - inception
 
   wordpress:
     build: ./requirements/wordpress
+    image: wordpress
     volumes:
-      - /home/isunwoo/data/wordpress:/var/www/html
+      - WordPress:/var/www/html
     env_file:
       - ./.env
     depends_on:
       - mariadb
     restart: on-failure
+    networks:
+      - inception
 
   mariadb:
     build: ./requirements/mariadb
+    image: mariadb
     volumes:
-      - /home/isunwoo/data/db:/var/lib/mysql/wordpress
+      - DB:/var/lib/mysql/wordpress
     env_file:
       - ./.env
     restart: on-failure
+    networks:
+      - inception
+
+networks:
+  inception:
+    driver: bridge
+
+volumes:
+  DB:
+    driver: local
+    driver_opts:
+      type : none
+      o : bind
+      device : /home/isunwoo/data/db
+  WordPress:
+    driver: local
+    driver_opts:
+      type : none
+      o : bind
+      device : /home/isunwoo/data/wordpress
